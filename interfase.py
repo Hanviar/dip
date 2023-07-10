@@ -34,7 +34,7 @@ class CupidBot():
                     photos = self.vktools.get_photos(worksheet['id'])
                     photo_string = ''
                     for photo in photos:
-                        photo_string += f'photo{photo["owner_id"]}_photo["id"],'
+                        photo_string += f'photo{photo["owner_id"]}_{photo["id"]},'
                 else:
                     self.message_send(event.user_id, f'имя: {worksheet["name"]} ссылка: vk.com/{worksheet["id"]}'),
                         self.worksheets = self.vktools.search_worksheet(self.params, self.offset)
@@ -42,7 +42,7 @@ class CupidBot():
                         photos = self.vktools.get_photos(worksheet['id'])
                         photo_string = ''
                         for photo in photos:
-                            photo_string += f'photo{photo["owner_id"]}_photo["id"],'
+                            photo_string += f'photo{photo["owner_id"]}_{photo["id"]},'
                         self.offset += 50
                     self.message_send(event.user_id, f'имя: {worksheet["name"]} ссылка: vk.com/{worksheet["id"]}'),
                     attachment = photo_string
