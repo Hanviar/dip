@@ -33,10 +33,11 @@ class VkTools:
       
       return result
 
-    def search_worksheet(self, params):
+    def search_worksheet(self, params, offset):
       try:
           users = self.vkapi.method('users.search',
                            {'count': 50,
+                            'offset': offset,
                             'hometown': params['city'],
                             'sex': 1 if params['sex'] == 2 else 2,
                             'has_photo': True,
@@ -72,14 +73,14 @@ class VkTools:
                  'comments': item['comments']['count']
       } for item in photos['items']
       ]
-      
-      return photos
+      !!!!!!
+      return result[:3]
 
 if __name__ = '__main__':
   user_id =
   tools = VkTools(access_token)
   params = tools.get_profile_info(user_id)
-  worksheets = tools.search_worksheet(params)
+  worksheets = tools.search_worksheet(params, 5)
   worksheet = worksheets.pop()
   photos = tools.get_photos(worksheet['id'])
   pprint(worksheet)
