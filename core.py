@@ -48,12 +48,38 @@ class VkTools:
           users = []
           print(f'error = {e}')
 
-      return users
+      result = [{'name': item['first_name'] + ' ' + item['last_name'],
+                'id': item['id']
+                } for item in users['items'] if item['is_closed'] is false
+               ]
       
+      return result
+
+    def get_photos(self, id):
+      try:
+          photos = self.vkapi.method('photos.get',
+                           {'owner_id': id,
+                           'album_id': 'profile',
+                           'extended': 1}
+                          )
+      except ApiError as e:
+          photos = {}
+          print(f'error = {e}')
+
+      result = [{'owner_id': item['owner_id'],
+                  'id': item['id'],
+                 'likes': item['likes']['count'],
+                 'comments': item['comments']['count']
+      } for item in photos['items']
+      ]
+      
+      return photos
 
 if __name__ = '__main__':
   user_id =
   tools = VkTools(access_token)
   params = tools.get_profile_info(user_id)
   worksheets = tools.search_worksheet(params)
-  pprint(worksheets)
+  worksheet = worksheets.pop()
+  photos = tools.get_photos(worksheet['id'])
+  pprint(worksheet)
