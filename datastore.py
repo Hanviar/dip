@@ -2,16 +2,17 @@ import sqlalchemy as sq
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import Session
+from config import db_url_object
 
 metadata = MetaData()
 Base = declarative_base()
+
+engine = create_engine(db_url_object)
 
 class Viewed(Base):
     __tablename__ = 'viewed'
     profile_id = sq.Column(sq.Integer, primary_key=True)
     worksheet_id = sq.Column(sq.Integer, primary_key=True)
-
-
 
 def add_user(engine, profile_id, worksheet_id):
     with Session(engine) as session:
