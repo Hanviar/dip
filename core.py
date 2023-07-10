@@ -6,10 +6,6 @@ from vk_api.exceptions import ApiError
 
 from config import acces_token
 
-
-# получение данных о пользователе
-
-
 class VkTools:
     def __init__(self, acces_token):
         self.vkapi = vk_api.VkApi(token=acces_token)
@@ -94,7 +90,6 @@ class VkTools:
                    'comments': item['comments']['count']
                    } for item in photos['items']
                   ]
-        # сортировка по лайкам и комментам
         result = sorted(result, key=lambda x: (x['likes'], x['comments']), reverse=True)
 
         return res
