@@ -4,6 +4,7 @@ from vk_api.utils import get_random_id
 
 from config import comunity_token, access_token
 from core import VkTools
+from datastore import add_user, check_user, engine
 
 class CupidBot():
     def __init__(self, comunity_token, access_token)
