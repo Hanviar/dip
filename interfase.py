@@ -56,7 +56,7 @@ class CupidBot():
                     if not self.worksheets:
                         self.worksheets = self.vk_tools.search_worksheet(
                             self.params, self.offset)
-                    else self.offset += 50
+                        else self.offset += 50
                     
                     worksheet = None
                     new_worksheets = []
