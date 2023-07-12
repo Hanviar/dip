@@ -98,7 +98,7 @@ if __name__ = '__main__':
   user_id =
   tools = VkTools(access_token)
   params = tools.get_profile_info(user_id)
-  worksheets = tools.search_worksheet(params, 5)
+  worksheets = tools.search_worksheet(params, 100)
   worksheet = worksheets.pop()
   photos = tools.get_photos(worksheet['id'])
   pprint(worksheet)
