@@ -56,8 +56,8 @@ class CupidBot():
                     if not self.worksheets:
                         self.worksheets = self.vk_tools.search_worksheet(
                             self.params, self.offset)
-
-                    # проверка анкеты в бд в соотвествие с event.user_id
+                    else self.offset = 50
+                    
                     worksheet = None
                     new_worksheets = []
                     for worksheet in self.worksheets:
